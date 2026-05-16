@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         text: "You have been logged out successfully.",
         confirmButtonColor: "#ff7a00"
       }).then(() => {
-        window.location.href = "login.html";
+        window.location.href = "../index.html";
       });
     });
   });
