@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       text: `Welcome ${matchedUser.name}`,
       confirmButtonColor: "#ff7a00"
     }).then(() => {
-      window.location.href = "index.html";
+      window.location.href = "../index.html";
     });
   });
 
