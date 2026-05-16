@@ -1,12 +1,20 @@
-const LOGGED_IN_KEY = "loggedInUser";
-
 document.addEventListener("DOMContentLoaded", () => {
-  const userData = localStorage.getItem(LOGGED_IN_KEY);
+  const userData = localStorage.getItem("loggedInUser");
+  const nav = document.querySelector("nav");
+
+  if (!nav) return;
   if (!userData) return;
 
   const user = JSON.parse(userData);
-  const nav = document.querySelector("nav");
-  if (!nav) return;
+
+  /* Remove Login link from all pages */
+  const loginLinks = nav.querySelectorAll(
+    'a[href="login.html"], a[href="pages/login.html"]'
+  );
+
+  loginLinks.forEach((link) => {
+    link.remove();
+  });
 
   const userSpan = document.createElement("span");
   userSpan.textContent = `Welcome, ${user.name}`;
@@ -42,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }).then((result) => {
       if (!result.isConfirmed) return;
 
-      localStorage.removeItem(LOGGED_IN_KEY);
+      localStorage.removeItem("loggedInUser");
 
       Swal.fire({
         icon: "success",
@@ -50,7 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
         text: "You have been logged out successfully.",
         confirmButtonColor: "#ff7a00"
       }).then(() => {
-        window.location.href = "../index.html";
+        const homePath = window.location.pathname.includes("/pages/")
+          ? "../index.html"
+          : "index.html";
+
+        window.location.href = homePath;
       });
     });
   });
