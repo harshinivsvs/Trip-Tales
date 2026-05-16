@@ -1,3 +1,36 @@
+const LOGGED_IN_KEY = "loggedInUser";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loggedInUser = localStorage.getItem(LOGGED_IN_KEY);
+
+  if (!loggedInUser) {
+    Swal.fire({
+      icon: "warning",
+      title: "Login Required",
+      text: "Please sign in or register before booking your trip.",
+      confirmButtonColor: "#ff7a00"
+    }).then(() => {
+      window.location.href = "login.html";
+    });
+
+    return;
+  }
+
+  const bookingForm = document.getElementById("bookingForm");
+
+  bookingForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    Swal.fire({
+      icon: "success",
+      title: "Booking Confirmed",
+      text: "Your trip has been booked successfully!",
+      confirmButtonColor: "#ff7a00"
+    }).then(() => {
+      bookingForm.reset();
+    });
+  });
+});
 const STORAGE_KEY = "tripBookingData";
 
 const TEXT_FIELDS = [
