@@ -36,7 +36,7 @@ The Home page acts as the landing page of the website. It introduces users to th
 - Navigation bar
 - Call-to-action button
 - Feature cards
-
+![Home Page](Screenshots/Home.png)
 ---
 
 ### 🌎 2. Destinations Page
@@ -48,7 +48,7 @@ The Destinations page displays multiple country cards with images and short trav
 - Destination images
 - Short descriptions
 - Links to country details page
-
+![Destinations Page](Screenshots/Destinations.png)
 ---
 
 ### 📍 3. Country Details Page
@@ -61,7 +61,7 @@ The Country Details page provides detailed information about selected countries.
 - Transport details
 - Accommodation details
 - Country-specific images
-
+![Country Details Page](Screenshots/Country.png)
 ---
 
 ### 🧾 4. Booking Page
@@ -73,7 +73,7 @@ The Booking page allows users to enter travel booking details through a form.
 - User input fields
 - JavaScript validation
 - Interactive form handling
-
+![Online Booking Page](Screenshots/Online%20Booking.png)
 ---
 
 ### ⭐ 5. Reviews Page
@@ -86,6 +86,7 @@ The Reviews page displays user reviews and includes a React.js-based dynamic rev
 - Delete reviews
 - React state management
 - localStorage review saving
+![Reviews Page](Screenshots/Reviews.png)
 
 ---
 
@@ -99,6 +100,8 @@ The About page explains the purpose of the Trip Organiser System and provides pr
 - Features section
 - Team details
 - Address/contact section
+![About Page Section 1](Screenshots/About-1.png)
+![About Page Section 1](Screenshots/About-2.png)
 
 ---
 
@@ -111,7 +114,7 @@ The Login page allows users to log in and stores login details using localStorag
 - User authentication simulation
 - localStorage usage
 - Logout functionality
-
+![Login Page](Screenshots/Login.png)
 ---
 
 ## 🛠️ Technologies Used
@@ -259,5 +262,15 @@ Trip-Tales
 │   ├── spot
 │   ├── transport
 │   └── logo.png
+│
+├── Screenshots
+│   ├── About-1.png
+│   ├── About-2.png
+│   ├── Country.png
+│   ├── Destinations.png
+│   ├── Home.png
+│   ├── Login.png
+│   ├── Online Booking.png
+│   └── Reviews.png
 │
 └── README.md
