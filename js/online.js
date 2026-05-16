@@ -1,36 +1,3 @@
-const LOGGED_IN_KEY = "loggedInUser";
-
-document.addEventListener("DOMContentLoaded", () => {
-  const loggedInUser = localStorage.getItem(LOGGED_IN_KEY);
-
-  if (!loggedInUser) {
-    Swal.fire({
-      icon: "warning",
-      title: "Login Required",
-      text: "Please sign in or register before booking your trip.",
-      confirmButtonColor: "#ff7a00"
-    }).then(() => {
-      window.location.href = "login.html";
-    });
-
-    return;
-  }
-
-  const bookingForm = document.getElementById("bookingForm");
-
-  bookingForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    Swal.fire({
-      icon: "success",
-      title: "Booking Confirmed",
-      text: "Your trip has been booked successfully!",
-      confirmButtonColor: "#ff7a00"
-    }).then(() => {
-      bookingForm.reset();
-    });
-  });
-});
 const STORAGE_KEY = "tripBookingData";
 
 const TEXT_FIELDS = [
@@ -64,7 +31,9 @@ function saveFormData() {
 
   TEXT_FIELDS.forEach((id) => {
     const element = document.getElementById(id);
-    if (element) data[id] = element.value;
+    if (element) {
+      data[id] = element.value;
+    }
   });
 
   data.checkboxes = [...document.querySelectorAll("input[type='checkbox']")].map((checkbox) => ({
@@ -73,20 +42,29 @@ function saveFormData() {
   }));
 
   const nearbyRadio = document.querySelector("input[type='radio'][name='nearby']:checked");
-  if (nearbyRadio) data.nearby = nearbyRadio.parentElement.textContent.trim();
+
+  if (nearbyRadio) {
+    data.nearby = nearbyRadio.parentElement.textContent.trim();
+  }
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
 function loadFormData() {
   const savedData = localStorage.getItem(STORAGE_KEY);
-  if (!savedData) return;
+
+  if (!savedData) {
+    return;
+  }
 
   const data = JSON.parse(savedData);
 
   TEXT_FIELDS.forEach((id) => {
     const element = document.getElementById(id);
-    if (element && data[id] !== undefined) element.value = data[id];
+
+    if (element && data[id] !== undefined) {
+      element.value = data[id];
+    }
   });
 
   if (data.checkboxes) {
@@ -94,7 +72,9 @@ function loadFormData() {
       const label = checkbox.parentElement.textContent.trim();
       const savedCheckbox = data.checkboxes.find((item) => item.label === label);
 
-      if (savedCheckbox) checkbox.checked = savedCheckbox.checked;
+      if (savedCheckbox) {
+        checkbox.checked = savedCheckbox.checked;
+      }
     });
   }
 
@@ -136,50 +116,127 @@ function validateForm() {
   const accountPattern = /^[0-9]{12}$/;
   const numberPattern = /^[0-9]+$/;
 
-  if (!name) return showAlert("warning", "Missing Name", "Please enter your full name."), false;
-  if (!namePattern.test(name)) return showAlert("warning", "Invalid Name", "Full name should contain only alphabets and spaces."), false;
+  if (!name) {
+    showAlert("warning", "Missing Name", "Please enter your full name.");
+    return false;
+  }
 
-  if (!email) return showAlert("warning", "Missing Email", "Please enter your email."), false;
-  if (!emailPattern.test(email)) return showAlert("warning", "Invalid Email", "Please enter a valid email address."), false;
+  if (!namePattern.test(name)) {
+    showAlert("warning", "Invalid Name", "Full name should contain only alphabets and spaces.");
+    return false;
+  }
 
-  if (!members) return showAlert("warning", "Missing Members", "Please enter number of members."), false;
-  if (!numberPattern.test(members) || Number(members) < 1) return showAlert("warning", "Invalid Members", "Number of members should be at least 1."), false;
+  if (!email) {
+    showAlert("warning", "Missing Email", "Please enter your email.");
+    return false;
+  }
 
-  if (!contact) return showAlert("warning", "Missing Contact", "Please enter contact number."), false;
-  if (!phonePattern.test(contact)) return showAlert("warning", "Invalid Contact", "Contact number must be exactly 10 digits."), false;
+  if (!emailPattern.test(email)) {
+    showAlert("warning", "Invalid Email", "Please enter a valid email address.");
+    return false;
+  }
 
-  if (!address) return showAlert("warning", "Missing Address", "Please enter your address."), false;
+  if (!members) {
+    showAlert("warning", "Missing Members", "Please enter number of members.");
+    return false;
+  }
 
-  if (!bankname) return showAlert("warning", "Missing Bank Name", "Please enter bank name."), false;
-  if (!namePattern.test(bankname)) return showAlert("warning", "Invalid Bank Name", "Bank name should contain only alphabets and spaces."), false;
+  if (!numberPattern.test(members) || Number(members) < 1) {
+    showAlert("warning", "Invalid Members", "Number of members should be at least 1.");
+    return false;
+  }
 
-  if (!accountnumber) return showAlert("warning", "Missing Account Number", "Please enter account number."), false;
-  if (!accountPattern.test(accountnumber)) return showAlert("warning", "Invalid Account Number", "Account number must be exactly 12 digits."), false;
+  if (!contact) {
+    showAlert("warning", "Missing Contact", "Please enter contact number.");
+    return false;
+  }
 
-  if (!budget) return showAlert("warning", "Missing Budget", "Please enter total budget."), false;
-  if (!numberPattern.test(budget) || Number(budget) <= 0) return showAlert("warning", "Invalid Budget", "Budget should be a positive number."), false;
+  if (!phonePattern.test(contact)) {
+    showAlert("warning", "Invalid Contact", "Contact number must be exactly 10 digits.");
+    return false;
+  }
 
-  if (!payment) return showAlert("warning", "Missing Payment Method", "Please select payment method."), false;
-  if (!country) return showAlert("warning", "Missing Country", "Please select country."), false;
-  if (!spot) return showAlert("warning", "Missing Tourist Spot", "Please select tourist spot."), false;
-  if (!date) return showAlert("warning", "Missing Travel Date", "Please select travel date."), false;
+  if (!address) {
+    showAlert("warning", "Missing Address", "Please enter your address.");
+    return false;
+  }
 
-  if (!days) return showAlert("warning", "Missing Days", "Please enter number of days."), false;
-  if (!numberPattern.test(days) || Number(days) < 1) return showAlert("warning", "Invalid Days", "Number of days should be at least 1."), false;
+  if (!bankname) {
+    showAlert("warning", "Missing Bank Name", "Please enter bank name.");
+    return false;
+  }
+
+  if (!namePattern.test(bankname)) {
+    showAlert("warning", "Invalid Bank Name", "Bank name should contain only alphabets and spaces.");
+    return false;
+  }
+
+  if (!accountnumber) {
+    showAlert("warning", "Missing Account Number", "Please enter account number.");
+    return false;
+  }
+
+  if (!accountPattern.test(accountnumber)) {
+    showAlert("warning", "Invalid Account Number", "Account number must be exactly 12 digits.");
+    return false;
+  }
+
+  if (!budget) {
+    showAlert("warning", "Missing Budget", "Please enter total budget.");
+    return false;
+  }
+
+  if (!numberPattern.test(budget) || Number(budget) <= 0) {
+    showAlert("warning", "Invalid Budget", "Budget should be a positive number.");
+    return false;
+  }
+
+  if (!payment) {
+    showAlert("warning", "Missing Payment Method", "Please select payment method.");
+    return false;
+  }
+
+  if (!country) {
+    showAlert("warning", "Missing Country", "Please select country.");
+    return false;
+  }
+
+  if (!spot) {
+    showAlert("warning", "Missing Tourist Spot", "Please select tourist spot.");
+    return false;
+  }
+
+  if (!date) {
+    showAlert("warning", "Missing Travel Date", "Please select travel date.");
+    return false;
+  }
+
+  if (!days) {
+    showAlert("warning", "Missing Days", "Please enter number of days.");
+    return false;
+  }
+
+  if (!numberPattern.test(days) || Number(days) < 1) {
+    showAlert("warning", "Invalid Days", "Number of days should be at least 1.");
+    return false;
+  }
 
   const accommodationChecked = document.querySelectorAll("#accommodationGroup input[type='checkbox']:checked");
+
   if (accommodationChecked.length === 0) {
     showAlert("warning", "Missing Accommodation", "Please select at least one accommodation option.");
     return false;
   }
 
   const transportChecked = document.querySelectorAll("#transportGroup input[type='checkbox']:checked");
+
   if (transportChecked.length === 0) {
     showAlert("warning", "Missing Transport", "Please select at least one transport option.");
     return false;
   }
 
   const nearbySelected = document.querySelector("input[type='radio'][name='nearby']:checked");
+
   if (!nearbySelected) {
     showAlert("warning", "Missing Nearby Option", "Please select whether you want to travel nearby places.");
     return false;
@@ -196,7 +253,26 @@ function validateForm() {
 function handleBookingSubmit(event) {
   event.preventDefault();
 
-  if (!validateForm()) return;
+  const loggedInUser = localStorage.getItem("loggedInUser");
+
+  if (!loggedInUser) {
+    Swal.fire({
+      icon: "warning",
+      title: "Login Required",
+      text: "Please sign in or register before booking your trip.",
+      confirmButtonColor: "#ff7a00",
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    }).then(() => {
+      window.location.href = "login.html";
+    });
+
+    return;
+  }
+
+  if (!validateForm()) {
+    return;
+  }
 
   saveFormData();
 
@@ -214,13 +290,36 @@ function handleBookingSubmit(event) {
       <b>${email}</b>
     `,
     confirmButtonColor: "#ff7a00"
+  }).then(() => {
+    localStorage.removeItem(STORAGE_KEY);
+    document.getElementById("bookingForm").reset();
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const loggedInUser = localStorage.getItem("loggedInUser");
+
+  if (!loggedInUser) {
+    Swal.fire({
+      icon: "warning",
+      title: "Login Required",
+      text: "Please sign in or register before booking your trip.",
+      confirmButtonColor: "#ff7a00",
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    }).then(() => {
+      window.location.href = "login.html";
+    });
+
+    return;
+  }
+
   loadFormData();
   attachAutoSave();
 
   const form = document.getElementById("bookingForm");
-  if (form) form.addEventListener("submit", handleBookingSubmit);
+
+  if (form) {
+    form.addEventListener("submit", handleBookingSubmit);
+  }
 });
