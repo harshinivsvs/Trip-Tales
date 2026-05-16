@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking - Trip Organiser</title>
+
+  <link rel="stylesheet" href="../css/online.css">
+  <link rel="stylesheet" href="../libraries/animations.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="overlay fade-in">
+
+    <header class="slide-down">
+    <div class="logo-section">
+      <img 
+        src="../images/logo.png" 
+        alt="Trip Tales Logo" 
+        class="logo-img"
+      >
+      <h2>Trip Tales</h2>
+    </div>
+
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="online.html" class="active">Booking</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+      </nav>
+    </header>
+
+    <section class="page-title slide-down" data-aos="fade-down">
+      <h1>Online Booking Form</h1>
+      <p>Enter your details and confirm your dream trip</p>
+    </section>
+
+    <form id="bookingForm" class="booking-container" novalidate>
+
+      <div class="booking-card hover-lift" data-aos="fade-up">
+        <h2><span class="material-icons float">person</span> Enter Your Details</h2>
+
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Mail ID</label>
+          <input type="text" id="email" placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+          <label for="members">Number of Members</label>
+          <input type="text" id="members" placeholder="Enter number of members">
+        </div>
+
+        <div class="form-group">
+          <label for="contact">Contact Number</label>
+          <input type="text" id="contact" placeholder="Enter 10 digit contact number" maxlength="10">
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address</label>
+          <textarea id="address" rows="4" placeholder="Enter your address"></textarea>
+        </div>
+      </div>
+
+      <div class="booking-card hover-lift" data-aos="fade-up" data-aos-delay="100">
+        <h2><span class="material-icons float">account_balance</span> Banking Details</h2>
+
+        <div class="form-group">
+          <label for="bankname">Bank Name</label>
+          <input type="text" id="bankname" placeholder="Enter bank name">
+        </div>
+
+        <div class="form-group">
+          <label for="accountnumber">Account Number</label>
+          <input type="text" id="accountnumber" placeholder="Enter 12 digit account number" maxlength="12">
+        </div>
+
+        <div class="form-group">
+          <label for="budget">Total Budget</label>
+          <input type="text" id="budget" placeholder="Enter your total budget">
+        </div>
+
+        <div class="form-group">
+          <label for="payment">Payment Method</label>
+          <select id="payment">
+            <option value="">Select payment method</option>
+            <option>Net Banking</option>
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+            <option>UPI</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="booking-card hover-lift" data-aos="fade-up" data-aos-delay="200">
+        <h2><span class="material-icons float">flight_takeoff</span> Trip Details</h2>
+
+        <div class="form-group">
+          <label for="country">Select Country</label>
+          <select id="country">
+            <option value="">Choose your destination</option>
+            <option>France</option>
+            <option>Switzerland</option>
+            <option>Dubai</option>
+            <option>Maldives</option>
+            <option>Japan</option>
+            <option>USA</option>
+            <option>Italy</option>
+            <option>UK</option>
+            <option>Australia</option>
+            <option>Singapore</option>
+            <option>Thailand</option>
+            <option>India</option>
+            <option>Spain</option>
+            <option>Brazil</option>
+            <option>South Africa</option>
+            <option>Germany</option>
+            <option>Canada</option>
+            <option>Turkey</option>
+            <option>Greece</option>
+            <option>Indonesia</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="spot">Preferred Tourist Spot</label>
+          <select id="spot">
+            <option value="">Select tourist spot</option>
+            <option>Eiffel Tower</option>
+            <option>Swiss Alps</option>
+            <option>Burj Khalifa</option>
+            <option>Maldives Beaches</option>
+            <option>Tokyo</option>
+            <option>New York City</option>
+            <option>Rome</option>
+            <option>London</option>
+            <option>Sydney</option>
+            <option>Marina Bay</option>
+            <option>Phuket</option>
+            <option>Goa</option>
+            <option>Barcelona</option>
+            <option>Rio de Janeiro</option>
+            <option>Cape Town</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="date">Travel Date</label>
+          <input type="date" id="date">
+        </div>
+
+        <div class="form-group">
+          <label for="days">Number of Days</label>
+          <input type="text" id="days" placeholder="Enter total trip days">
+        </div>
+      </div>
+
+      <div class="booking-card hover-lift" data-aos="fade-up" data-aos-delay="300">
+        <h2><span class="material-icons float">hotel</span> Accommodation and Transport</h2>
+
+        <div class="form-group">
+          <label>Accommodation Required</label>
+          <div class="checkbox-group" id="accommodationGroup">
+            <label><input type="checkbox"> Hotel</label>
+            <label><input type="checkbox"> Resort</label>
+            <label><input type="checkbox"> Villa</label>
+            <label><input type="checkbox"> No Accommodation Needed</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Transport Needed</label>
+          <div class="checkbox-group" id="transportGroup">
+            <label><input type="checkbox"> Flight</label>
+            <label><input type="checkbox"> Car</label>
+            <label><input type="checkbox"> Cab</label>
+            <label><input type="checkbox"> Bus</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Travel Near By Places</label>
+          <div class="radio-group">
+            <label><input type="radio" name="nearby"> Yes</label>
+            <label><input type="radio" name="nearby"> No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="special">Special Requirements</label>
+          <textarea id="special" rows="4" placeholder="Mention food, transport, room type, guide, or other requirements. If none, type No."></textarea>
+        </div>
+      </div>
+
+      <div class="full-width" data-aos="zoom-in">
+        <button type="submit" class="confirm-btn pulse">Confirm Booking</button>
+      </div>
+
+    </form>
+
+    <footer class="fade-in">
+      <p>&copy; 2026 Trip Organiser System | Book Your Journey With Confidence</p>
+    </footer>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../js/online.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+</body>
+</html>

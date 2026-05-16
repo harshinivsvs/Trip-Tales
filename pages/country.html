@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Country Details - Trip Organiser</title>
+
+  <link rel="stylesheet" href="../css/country.css">
+  <link rel="stylesheet" href="../libraries/animations.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="slide-down">
+    <div class="logo-section">
+      <img 
+        src="../images/logo.png" 
+        alt="Trip Tales Logo" 
+        class="logo-img"
+      >
+      <h2>Trip Tales</h2>
+    </div>
+
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="destinations.html" class="active">Destinations</a>
+      <a href="online.html">Booking</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="hero fade-in" id="hero">
+    <div class="hero-content slide-up" data-aos="fade-up">
+      <h1 id="countryName">Country</h1>
+      <p id="countryTagline">Explore full travel details</p>
+    </div>
+  </section>
+
+  <section class="section hover-lift" data-aos="fade-up">
+    <div class="section-header">
+      <span class="material-icons float">place</span>
+      Tourist Spots
+    </div>
+
+    <div class="section-body">
+      <img id="spotsImage" src="" alt="Tourist spots">
+      <div class="text">
+        <h3><i class="fa-solid fa-location-dot"></i> Available Tourist Spots</h3>
+        <p id="spotsText"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hover-lift" data-aos="fade-up" data-aos-delay="100">
+    <div class="section-header">
+      <span class="material-icons float">flight_takeoff</span>
+      Transportation Facility
+    </div>
+
+    <div class="section-body">
+      <img id="transportImage" src="" alt="Transport">
+      <div class="text">
+        <h3><i class="fa-solid fa-plane"></i> Transportation Details</h3>
+        <p id="transportText"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hover-lift" data-aos="fade-up" data-aos-delay="200">
+    <div class="section-header">
+      <span class="material-icons float">hotel</span>
+      Hotels and Accommodation
+    </div>
+
+    <div class="section-body">
+      <img id="hotelImage" src="" alt="Hotel">
+      <div class="text">
+        <h3><i class="fa-solid fa-hotel"></i> Accommodation Details</h3>
+        <p id="hotelText"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-grid">
+    <div class="mini-card hover-lift" data-aos="zoom-in" data-aos-delay="50">
+      <span class="material-icons float">payments</span>
+      <h3>Budget Idea</h3>
+      <p id="budgetText"></p>
+    </div>
+
+    <div class="mini-card hover-lift" data-aos="zoom-in" data-aos-delay="100">
+      <span class="material-icons float">currency_exchange</span>
+      <h3>Currency</h3>
+      <p id="currencyText"></p>
+    </div>
+
+    <div class="mini-card hover-lift" data-aos="zoom-in" data-aos-delay="150">
+      <span class="material-icons float">info</span>
+      <h3>Special Info</h3>
+      <p id="specialText"></p>
+    </div>
+
+    <div class="mini-card hover-lift" data-aos="zoom-in" data-aos-delay="200">
+      <span class="material-icons float">badge</span>
+      <h3>Visa Details</h3>
+      <p id="visaText"></p>
+    </div>
+  </section>
+
+  <footer class="fade-in">
+    <p id="footerText">&copy; 2026 Trip Organiser System</p>
+  </footer>
+
+  <script>
+    const countryData = {
+      france: {
+        name: "France",
+        tagline: "Paris, art, romance and beautiful city travel",
+        hero: "../images/country/France.avif",
+        spotsImage: "../images/spot/France.avif",
+        spots: "Eiffel Tower, Louvre Museum, Notre-Dame Cathedral, Disneyland Paris and Seine river cruises are the major tourist attractions.",
+        transportImage: "../images/transport/France.avif",
+        transport: "International flights are available to Paris. Within France, metro, buses, taxis and high-speed trains are convenient and tourist-friendly.",
+        hotelImage: "../images/accomodation/France.avif",
+        hotel: "Budget hotels start from €70. Mid-range stays cost €120–€220. Luxury stays are higher. Hostels and apartments are also available.",
+        budget: "Approximate budget: ₹1.5 lakh to ₹3 lakh depending on trip duration and hotel type.",
+        currency: "Euro (€). Card payments are common and currency exchange is easily available.",
+        special: "Best months are April to June and September to October. Learn simple French greetings for easier interaction.",
+        visa: "Schengen visa required for Indian tourists with passport, travel plan and financial proof."
+      },
+
+      switzerland: {
+        name: "Switzerland",
+        tagline: "Snow mountains, rail journeys and scenic valleys",
+        hero: "../images/country/Switzerland.avif",
+        spotsImage: "../images/spot/Switzerland.avif",
+        spots: "Interlaken, Jungfraujoch, Lucerne, Zurich and Mount Titlis are very popular tourist places.",
+        transportImage: "../images/transport/Switzerland.jpeg",
+        transport: "Flights connect through European hubs. Swiss railways are highly efficient. Buses, mountain trains and cable cars are widely used.",
+        hotelImage: "../images/accomodation/Switzerland.avif",
+        hotel: "Budget hotels cost CHF 80–140. Mid-range stays cost CHF 150–250. Resorts and scenic stays are also available.",
+        budget: "Approximate budget: ₹2 lakh to ₹4 lakh.",
+        currency: "Swiss Franc (CHF). Cards are accepted in most places.",
+        special: "Carry warm clothes even in cooler months. Scenic train routes are a highlight.",
+        visa: "Schengen visa required."
+      },
+
+      dubai: {
+        name: "Dubai",
+        tagline: "Luxury city, shopping and desert adventure",
+        hero: "../images/country/Dubai.avif",
+        spotsImage: "../images/spot/Dubai.avif",
+        spots: "Burj Khalifa, Dubai Mall, Palm Jumeirah, Marina and Desert Safari are top attractions.",
+        transportImage: "../images/transport/Dubai.avif",
+        transport: "Direct flights from India are common. Dubai Metro, taxis and rental cars are easily available.",
+        hotelImage: "../images/accomodation/Dubai.avif",
+        hotel: "Budget stays start around AED 150. Mid-range stays AED 300–700. Luxury hotels are premium.",
+        budget: "Approximate budget: ₹80,000 to ₹2 lakh.",
+        currency: "UAE Dirham (AED).",
+        special: "Respect local laws and modest dressing rules in public areas.",
+        visa: "Tourist visa required, usually easy to obtain."
+      },
+
+      maldives: {
+        name: "Maldives",
+        tagline: "Blue water, beach villas and peaceful island stays",
+        hero: "../images/country/Maldives.avif",
+        spotsImage: "../images/spot/Maldives.avif",
+        spots: "Male, Maafushi, private island resorts, coral reefs and water sports beaches are famous.",
+        transportImage: "../images/transport/Maldives.avif",
+        transport: "Flights land in Male. Speedboats and seaplanes are used for island transfers.",
+        hotelImage: "../images/accomodation/Maldives.avif",
+        hotel: "Guesthouses are affordable, while beach resorts and water villas are premium accommodation choices.",
+        budget: "Approximate budget: ₹1 lakh to ₹3 lakh.",
+        currency: "Maldivian Rufiyaa (MVR), though USD is often used.",
+        special: "Best for honeymoon and beach vacations. Island transfer costs should be planned.",
+        visa: "Visa on arrival for tourists."
+      },
+
+      japan: {
+        name: "Japan",
+        tagline: "Technology, tradition and unforgettable city culture",
+        hero: "../images/country/Japan.avif",
+        spotsImage: "../images/spot/Japan.avif",
+        spots: "Tokyo, Kyoto, Osaka, Mount Fuji and Nara are highly visited tourist destinations.",
+        transportImage: "../images/transport/Japan.jpg",
+        transport: "International flights are available. Japan has bullet trains, subways and buses with excellent time management.",
+        hotelImage: "../images/accomodation/Japan.avif",
+        hotel: "Capsule hotels, business hotels, ryokans and luxury hotels are available.",
+        budget: "Approximate budget: ₹1.5 lakh to ₹3 lakh.",
+        currency: "Japanese Yen (JPY).",
+        special: "Public discipline is very important. Keep cash for some smaller places.",
+        visa: "Tourist visa required."
+      },
+
+      usa: {
+        name: "USA",
+        tagline: "Big cities, famous landmarks and diverse travel experiences",
+        hero: "../images/country/USA.avif",
+        spotsImage: "../images/spot/USA.avif",
+        spots: "New York City, Los Angeles, Las Vegas, San Francisco and Washington DC are top tourist areas.",
+        transportImage: "../images/transport/USA.webp",
+        transport: "Long-haul international flights are common. Domestic flights, subways, buses and car rentals are widely used.",
+        hotelImage: "../images/accomodation/USA.avif",
+        hotel: "Hotels range from budget motels to luxury city stays depending on the state and city.",
+        budget: "Approximate budget: ₹2 lakh to ₹5 lakh.",
+        currency: "US Dollar (USD).",
+        special: "Travel insurance is useful. Distances between cities can be large.",
+        visa: "US tourist visa required."
+      },
+
+      italy: {
+        name: "Italy",
+        tagline: "History, food, canals and ancient architecture",
+        hero: "../images/country/Italy.avif",
+        spotsImage: "../images/spot/Italy.avif",
+        spots: "Rome, Venice, Florence, Milan and the Amalfi Coast are famous tourist destinations.",
+        transportImage: "../images/transport/Italy.avif",
+        transport: "International flights arrive in Rome and Milan. Trains and buses are excellent for city-to-city travel.",
+        hotelImage: "../images/accomodation/Italy.avif",
+        hotel: "Budget hostels, boutique hotels and luxury heritage stays are available.",
+        budget: "Approximate budget: ₹1.5 lakh to ₹3 lakh.",
+        currency: "Euro (€).",
+        special: "Italian food and historical walks are major highlights.",
+        visa: "Schengen visa required."
+      },
+
+      uk: {
+        name: "United Kingdom",
+        tagline: "Royal culture, museums and classic city travel",
+        hero: "../images/country/UK.avif",
+        spotsImage: "../images/spot/UK.avif",
+        spots: "London, Edinburgh, Manchester, Stonehenge and Buckingham Palace are popular tourist places.",
+        transportImage: "../images/transport/UK.jpg",
+        transport: "Direct flights are available. Underground trains, buses and intercity rail are convenient.",
+        hotelImage: "../images/accomodation/UK.avif",
+        hotel: "Hotels range from budget inns to premium city hotels.",
+        budget: "Approximate budget: ₹2 lakh to ₹4 lakh.",
+        currency: "Pound Sterling (GBP).",
+        special: "Weather can change quickly. Carry layers.",
+        visa: "UK tourist visa required."
+      },
+
+      australia: {
+        name: "Australia",
+        tagline: "Coastal beauty, city life and natural wonders",
+        hero: "../images/country/Australia.avif",
+        spotsImage: "../images/spot/Australia.avif",
+        spots: "Sydney Opera House, Melbourne, Gold Coast and Great Barrier Reef are famous spots.",
+        transportImage: "../images/transport/Australia.avif",
+        transport: "Flights connect major cities. Domestic flights, trains, buses and car rentals are available.",
+        hotelImage: "../images/accomodation/Australia.jpg",
+        hotel: "Hotels, serviced apartments, beach resorts and hostels are common.",
+        budget: "Approximate budget: ₹2 lakh to ₹5 lakh.",
+        currency: "Australian Dollar (AUD).",
+        special: "Seasons are opposite to India, so plan accordingly.",
+        visa: "Tourist visa required."
+      },
+
+      singapore: {
+        name: "Singapore",
+        tagline: "Modern city, gardens and efficient transport",
+        hero: "../images/country/Singapore.avif",
+        spotsImage: "../images/spot/Singapore.avif",
+        spots: "Marina Bay Sands, Sentosa, Gardens by the Bay and Universal Studios are famous attractions.",
+        transportImage: "../images/transport/Singapore.jpg",
+        transport: "Direct flights from India are common. MRT, buses and taxis are very efficient.",
+        hotelImage: "../images/accomodation/Singapore.avif",
+        hotel: "Budget hotels, family hotels and premium city stays are easily available.",
+        budget: "Approximate budget: ₹1 lakh to ₹2 lakh.",
+        currency: "Singapore Dollar (SGD).",
+        special: "City is very clean and follows strict public rules.",
+        visa: "Tourist visa required."
+      },
+
+      thailand: {
+        name: "Thailand",
+        tagline: "Budget-friendly beaches, food and nightlife",
+        hero: "../images/country/Thailand.avif",
+        spotsImage: "../images/spot/Thailand.avif",
+        spots: "Bangkok, Phuket, Pattaya, Krabi and Chiang Mai are popular destinations.",
+        transportImage: "../images/transport/Thailand.avif",
+        transport: "Direct flights are available. Tuk-tuks, buses, taxis and ferries are commonly used.",
+        hotelImage: "../images/accomodation/Thailand.avif",
+        hotel: "Very good budget hotels, beach resorts and villas are available.",
+        budget: "Approximate budget: ₹50,000 to ₹1.5 lakh.",
+        currency: "Thai Baht (THB).",
+        special: "Popular for shopping, beaches and budget travel.",
+        visa: "Tourist rules vary; check current visa policy before travel."
+      },
+
+      india: {
+        name: "India",
+        tagline: "Culture, diversity and memorable domestic travel",
+        hero: "../images/country/India.avif",
+        spotsImage: "../images/spot/India.avif",
+        spots: "Taj Mahal, Goa, Kerala, Jaipur, Manali and Varanasi are major tourist places.",
+        transportImage: "../images/transport/India.jpg",
+        transport: "Domestic flights, trains, buses, taxis and rental cars are widely available.",
+        hotelImage: "../images/accomodation/India.avif",
+        hotel: "Affordable lodges, premium hotels, beach resorts and heritage stays are available.",
+        budget: "Approximate budget: ₹20,000 to ₹1 lakh depending on destination.",
+        currency: "Indian Rupee (INR).",
+        special: "Very diverse climate and food culture. Plan region-wise.",
+        visa: "No visa needed for domestic Indian travel."
+      },
+
+      spain: {
+        name: "Spain",
+        tagline: "Architecture, beaches and lively culture",
+        hero: "../images/country/Spain.avif",
+        spotsImage: "../images/spot/Spain.avif",
+        spots: "Barcelona, Madrid, Seville, Valencia and Ibiza are top tourist destinations.",
+        transportImage: "../images/transport/Spain.webp",
+        transport: "Flights arrive in Madrid and Barcelona. Trains, metros and buses are well connected.",
+        hotelImage: "../images/accomodation/Spain.jpg",
+        hotel: "Budget stays, boutique hotels and beach resorts are available.",
+        budget: "Approximate budget: ₹1.5 lakh to ₹3 lakh.",
+        currency: "Euro (€).",
+        special: "Late dinners and lively nightlife are common.",
+        visa: "Schengen visa required."
+      },
+
+      brazil: {
+        name: "Brazil",
+        tagline: "Beaches, festivals and natural beauty",
+        hero: "../images/country/Brazil.avif",
+        spotsImage: "../images/spot/Brazil.avif",
+        spots: "Rio de Janeiro, Christ the Redeemer, Amazon region and Iguazu Falls are famous attractions.",
+        transportImage: "../images/transport/Brazil.jpg",
+        transport: "Long-haul international flights are needed. Domestic flights and buses are available.",
+        hotelImage: "../images/accomodation/Brazil.avif",
+        hotel: "Hotels, beach stays and serviced apartments are available in tourist cities.",
+        budget: "Approximate budget: ₹2 lakh to ₹4 lakh.",
+        currency: "Brazilian Real (BRL).",
+        special: "Popular for carnival, football culture and beaches.",
+        visa: "Tourist entry rules should be checked before travel."
+      },
+
+      southafrica: {
+        name: "South Africa",
+        tagline: "Wildlife, scenic coasts and safari adventure",
+        hero: "../images/country/SouthAfrica.avif",
+        spotsImage: "../images/spot/SouthAfrica.avif",
+        spots: "Cape Town, Table Mountain, Kruger National Park and Garden Route are popular attractions.",
+        transportImage: "../images/transport/SouthAfrica.jpg",
+        transport: "Flights connect via major hubs. Internal flights, tourist buses and rental cars are used.",
+        hotelImage: "../images/accomodation/SouthAfrica.jpg",
+        hotel: "Safari lodges, city hotels and coastal resorts are available.",
+        budget: "Approximate budget: ₹1.5 lakh to ₹3 lakh.",
+        currency: "South African Rand (ZAR).",
+        special: "Safari booking in advance is recommended.",
+        visa: "Tourist visa required."
+      },
+
+      germany: {
+        name: "Germany",
+        tagline: "Historic cities, castles and rail travel",
+        hero: "../images/country/Germany.avif",
+        spotsImage: "../images/spot/Germany.avif",
+        spots: "Berlin, Munich, Cologne, Black Forest and Neuschwanstein Castle are famous tourist places.",
+        transportImage: "../images/transport/Germany.webp",
+        transport: "Flights arrive in major cities. Germany has one of the best rail networks in Europe.",
+        hotelImage: "../images/accomodation/Germany.jpg",
+        hotel: "City hotels, family stays and premium hotels are widely available.",
+        budget: "Approximate budget: ₹1.5 lakh to ₹3 lakh.",
+        currency: "Euro (€).",
+        special: "Train travel is highly convenient for tourists.",
+        visa: "Schengen visa required."
+      },
+
+      canada: {
+        name: "Canada",
+        tagline: "Lakes, mountains and clean modern cities",
+        hero: "../images/country/Canada.webp",
+        spotsImage: "../images/spot/Canada.jpg",
+        spots: "Toronto, Vancouver, Niagara Falls, Banff and Montreal are popular tourist areas.",
+        transportImage: "../images/transport/Canada.jpg",
+        transport: "International flights are available. Domestic flights, trains, buses and rental cars are used.",
+        hotelImage: "../images/accomodation/Canada.avif",
+        hotel: "Hotels, cabins, city stays and nature lodges are available.",
+        budget: "Approximate budget: ₹2 lakh to ₹4 lakh.",
+        currency: "Canadian Dollar (CAD).",
+        special: "Cold weather gear is needed in many months.",
+        visa: "Tourist visa required."
+      },
+
+      turkey: {
+        name: "Turkey",
+        tagline: "Historic mosques, balloons and cultural markets",
+        hero: "../images/country/Turkey.avif",
+        spotsImage: "../images/spot/Turkey.avif",
+        spots: "Istanbul, Cappadocia, Pamukkale and Antalya are leading tourist places.",
+        transportImage: "../images/transport/Turkey.webp",
+        transport: "Flights are available to Istanbul. Domestic flights, buses and taxis are convenient.",
+        hotelImage: "../images/accomodation/Turkey.jpg",
+        hotel: "City hotels, cave hotels and beach resorts are available.",
+        budget: "Approximate budget: ₹1.2 lakh to ₹2.5 lakh.",
+        currency: "Turkish Lira (TRY).",
+        special: "Cappadocia balloon rides are a famous attraction.",
+        visa: "Tourist visa or e-visa may be needed depending on nationality."
+      },
+
+      greece: {
+        name: "Greece",
+        tagline: "White villages, islands and sea-side beauty",
+        hero: "../images/country/Greece.avif",
+        spotsImage: "../images/spot/Greece.avif",
+        spots: "Santorini, Athens, Mykonos and Crete are among the most visited destinations.",
+        transportImage: "../images/transport/Greece.jpg",
+        transport: "Flights connect to Athens. Ferries, buses and rental cars are used for island travel.",
+        hotelImage: "../images/accomodation/Greece.jpg",
+        hotel: "Sea-view hotels, island resorts and boutique stays are available.",
+        budget: "Approximate budget: ₹1.5 lakh to ₹3 lakh.",
+        currency: "Euro (€).",
+        special: "Island hopping is a major attraction.",
+        visa: "Schengen visa required."
+      },
+
+      indonesia: {
+        name: "Indonesia",
+        tagline: "Bali beaches, temples and villa holidays",
+        hero: "../images/country/Indonesia.avif",
+        spotsImage: "../images/spot/Indonesia.avif",
+        spots: "Bali, Ubud, Jakarta, Komodo Islands and temple regions are popular attractions.",
+        transportImage: "../images/transport/Indonesia.jpg",
+        transport: "Flights arrive in Bali and Jakarta. Scooters, taxis, boats and private cars are used locally.",
+        hotelImage: "../images/accomodation/Indonesia.jpg",
+        hotel: "Budget stays, villas, resorts and private pool stays are very common.",
+        budget: "Approximate budget: ₹80,000 to ₹2 lakh.",
+        currency: "Indonesian Rupiah (IDR).",
+        special: "Bali is one of the most popular destinations for leisure and honeymoon trips.",
+        visa: "Tourist visa rules vary; check current entry requirements."
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get("country");
+    const data = countryData[key];
+
+    if (data) {
+      countryName.textContent = data.name;
+      countryTagline.textContent = data.tagline;
+      hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('${data.hero}')`;
+
+      spotsImage.src = data.spotsImage;
+      spotsText.textContent = data.spots;
+
+      transportImage.src = data.transportImage;
+      transportText.textContent = data.transport;
+
+      hotelImage.src = data.hotelImage;
+      hotelText.textContent = data.hotel;
+
+      budgetText.textContent = data.budget;
+      currencyText.textContent = data.currency;
+      specialText.textContent = data.special;
+      visaText.textContent = data.visa;
+
+      footerText.textContent = `© 2026 Trip Organiser System | ${data.name} travel details`;
+    } else {
+      countryName.textContent = "Destination Not Found";
+      countryTagline.textContent = "Please go back and select a country card.";
+      window.location.href = "destinations.html";
+    }
+  </script>
+
+  <script src="../js/auth.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,650 @@
+/* ===============================
+   GLOBAL STYLES
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Poppins', Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  color: #2b211b;
+  background:
+    radial-gradient(circle at top left, rgba(255, 122, 0, 0.13), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255, 190, 120, 0.22), transparent 35%),
+    linear-gradient(135deg, #fffaf4, #fff3e5, #ffffff);
+  overflow-x: hidden;
+}
+
+
+/* ===============================
+   HEADER SECTION
+================================ */
+header {
+  width: 100%;
+  height: 92px;
+  padding: 0 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(255, 248, 238, 0.90);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  box-shadow: 0 6px 22px rgba(255, 122, 0, 0.10);
+  border-bottom: 1px solid rgba(255, 170, 90, 0.22);
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  bottom: 0;
+
+  width: 80%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 122, 0, 0.45),
+    rgba(255, 190, 120, 0.55),
+    transparent
+  );
+
+  border-radius: 50px;
+}
+
+
+/* ===============================
+   LOGO SECTION
+================================ */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-section img {
+  width: 55px;
+  height: 55px;
+
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+
+  background: white;
+  box-shadow: 0 5px 14px rgba(255, 111, 0, 0.20);
+  transition: 0.3s ease;
+}
+
+.logo-section img:hover {
+  transform: rotate(-5deg) scale(1.06);
+}
+
+.logo-section h2 {
+  color: #2b211b;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+
+/* ===============================
+   NAVBAR SECTION
+================================ */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 22px;
+  flex-wrap: nowrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: #3b2a22;
+
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+
+  padding: 13px 24px;
+  border-radius: 35px;
+
+  transition: all 0.35s ease;
+}
+
+nav a:hover {
+  color: #ff7300;
+  background: rgba(255, 122, 0, 0.10);
+
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(255, 122, 0, 0.18);
+}
+
+/* current page only */
+nav a.active {
+  color: white;
+  background: linear-gradient(135deg, #ff8a00, #ff6a00);
+  box-shadow: 0 8px 20px rgba(255, 106, 0, 0.35);
+}
+
+nav a.active:hover {
+  color: white;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(255, 106, 0, 0.45);
+}
+
+
+/* ===============================
+   PAGE TITLE
+================================ */
+h1 {
+  text-align: center;
+  color: #ff7a00;
+
+  margin: 55px 0 45px;
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  position: relative;
+}
+
+h1::after {
+  content: "";
+  display: block;
+
+  width: 90px;
+  height: 4px;
+
+  margin: 14px auto 0;
+  border-radius: 50px;
+
+  background: linear-gradient(90deg, #ffb347, #ff7a00, #ffb347);
+  box-shadow: 0 6px 16px rgba(255, 122, 0, 0.30);
+}
+
+
+/* ===============================
+   REVIEWS CONTAINER
+================================ */
+.reviews-container {
+  width: 90%;
+  max-width: 980px;
+  margin: auto;
+  position: relative;
+}
+
+.reviews-container::before {
+  content: "✈";
+  position: absolute;
+  top: -35px;
+  left: -55px;
+
+  font-size: 70px;
+  color: rgba(255, 122, 0, 0.12);
+
+  transform: rotate(-20deg);
+}
+
+.reviews-container::after {
+  content: "🌍";
+  position: absolute;
+  bottom: -35px;
+  right: -45px;
+
+  font-size: 60px;
+  opacity: 0.16;
+}
+
+
+/* ===============================
+   REVIEW CARD
+================================ */
+.review-card {
+  width: 100%;
+  min-height: 210px;
+
+  background:
+    linear-gradient(white, white) padding-box,
+    linear-gradient(135deg, rgba(255, 122, 0, 0.65), rgba(255, 198, 120, 0.35), rgba(255, 122, 0, 0.55)) border-box;
+
+  border: 2px solid transparent;
+  border-radius: 28px;
+
+  padding: 28px;
+  margin-bottom: 30px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+
+  box-shadow:
+    0 18px 40px rgba(90, 55, 25, 0.10),
+    0 8px 22px rgba(255, 122, 0, 0.12);
+
+  position: relative;
+  overflow: hidden;
+
+  transition: 0.35s ease;
+}
+
+.review-card::before {
+  content: "";
+  position: absolute;
+  top: -65px;
+  right: -65px;
+
+  width: 170px;
+  height: 170px;
+
+  background: radial-gradient(circle, rgba(255, 122, 0, 0.18), transparent 65%);
+  border-radius: 50%;
+}
+
+.review-card::after {
+  content: "❝";
+  position: absolute;
+  right: 28px;
+  bottom: -8px;
+
+  font-size: 95px;
+  color: rgba(255, 122, 0, 0.12);
+  font-family: Georgia, serif;
+}
+
+.review-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow:
+    0 25px 55px rgba(90, 55, 25, 0.14),
+    0 12px 28px rgba(255, 122, 0, 0.20);
+}
+
+
+/* ===============================
+   PROFILE IMAGE
+================================ */
+.profile-pic {
+  width: 88px;
+  height: 88px;
+
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 4px solid #ff7a00;
+  outline: 5px solid rgba(255, 122, 0, 0.14);
+
+  box-shadow:
+    0 8px 18px rgba(255, 122, 0, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.12);
+
+  transition: 0.35s ease;
+}
+
+.review-card:hover .profile-pic {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+
+/* ===============================
+   REVIEW CONTENT
+================================ */
+.review-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.review-name {
+  font-weight: 900;
+  font-size: 21px;
+  color: #2b211b;
+  margin-bottom: 3px;
+}
+
+.review-location {
+  font-size: 14px;
+  color: #8a6b55;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.stars {
+  color: #ff7a00;
+  font-size: 22px;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 12px rgba(255, 122, 0, 0.22);
+}
+
+.review-text {
+  font-size: 15.8px;
+  color: #4f4038;
+  line-height: 1.8;
+}
+
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+  background: linear-gradient(135deg, #ff8a00, #ff6500);
+  color: white;
+
+  text-align: center;
+  padding: 18px;
+  margin-top: 55px;
+
+  font-weight: 800;
+  letter-spacing: 0.5px;
+
+  box-shadow: 0 -8px 24px rgba(255, 122, 0, 0.18);
+}
+
+/* ===== REACT ADD REVIEW SECTION ===== */
+
+.react-add-review-section {
+  padding: 60px 8%;
+  background: #fff7ed;
+  text-align: center;
+}
+
+.react-add-review-section h2 {
+  font-size: 34px;
+  color: #1f2937;
+  margin-bottom: 30px;
+}
+
+.react-review-wrapper {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.react-review-form {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.react-review-form input,
+.react-review-form textarea,
+.react-review-form select {
+  padding: 14px 16px;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+}
+
+.react-review-form textarea {
+  grid-column: span 2;
+  min-height: 110px;
+  resize: none;
+}
+
+.react-review-form button {
+  grid-column: span 2;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  background: #ff6b00;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.react-review-form button:hover {
+  background: #e85d00;
+  transform: translateY(-2px);
+}
+
+.react-new-reviews {
+  margin-top: 35px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.react-new-card {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  text-align: left;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+  border-left: 5px solid #ff6b00;
+}
+
+.react-new-card h3 {
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.trip-place {
+  color: #2563eb;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.stars {
+  margin-top: 12px;
+  color: #f59e0b;
+  font-size: 18px;
+}
+
+.delete-review-btn {
+  margin-top: 15px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 20px;
+  background: #ef4444;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-review-btn:hover {
+  background: #dc2626;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .react-review-form {
+    grid-template-columns: 1fr;
+  }
+
+  .react-review-form textarea,
+  .react-review-form button {
+    grid-column: span 1;
+  }
+
+  .react-new-reviews {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===============================
+   MEDIA QUERY - LAPTOP
+================================ */
+@media (max-width: 1200px) {
+  header {
+    padding: 0 28px;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 16px;
+    padding: 11px 18px;
+  }
+
+  .logo-section h2 {
+    font-size: 20px;
+  }
+}
+
+
+/* ===============================
+   MEDIA QUERY - TABLET
+================================ */
+@media (max-width: 980px) {
+  header {
+    height: auto;
+    padding: 16px 20px;
+
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 14px;
+    padding: 9px 15px;
+  }
+
+  .logo-section img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .logo-section h2 {
+    font-size: 21px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .reviews-container::before,
+  .reviews-container::after {
+    display: none;
+  }
+}
+
+
+/* ===============================
+   MEDIA QUERY - MOBILE
+================================ */
+@media (max-width: 768px) {
+  header {
+    padding: 14px 16px;
+  }
+
+  nav {
+    gap: 8px;
+  }
+
+  nav a {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  h1 {
+    font-size: 31px;
+    margin: 38px 0 28px;
+  }
+
+  .reviews-container {
+    width: 92%;
+  }
+
+  .review-card {
+    padding: 22px;
+    gap: 16px;
+    border-radius: 24px;
+  }
+
+  .profile-pic {
+    width: 72px;
+    height: 72px;
+  }
+
+  .review-name {
+    font-size: 18px;
+  }
+
+  .review-text {
+    font-size: 14.8px;
+  }
+}
+
+
+
+
+/* ===============================
+   MEDIA QUERY - SMALL MOBILE
+================================ */
+@media (max-width: 480px) {
+  header {
+    padding: 12px;
+  }
+
+  .logo-section img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .logo-section h2 {
+    font-size: 19px;
+  }
+
+  nav {
+    gap: 7px;
+  }
+
+  nav a {
+    font-size: 12.5px;
+    padding: 7px 11px;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+
+  .review-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .review-content {
+    width: 100%;
+  }
+
+  .profile-pic {
+    width: 78px;
+    height: 78px;
+  }
+
+  .stars {
+    font-size: 20px;
+  }
+
+  .review-text {
+    font-size: 14.5px;
+  }
+}

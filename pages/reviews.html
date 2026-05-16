@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews - Trip Organiser</title>
+
+  <link rel="stylesheet" href="../css/reviews.css">
+  <link rel="stylesheet" href="../libraries/animations.css">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="slide-down">
+    <div class="logo-section">
+      <img 
+        src="../images/logo.png" 
+        alt="Trip Tales Logo" 
+        class="logo-img"
+      >
+      <h2>Trip Tales</h2>
+    </div>
+
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="online.html">Booking</a>
+      <a href="reviews.html" class="active">Reviews</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <h1 data-aos="fade-down">Traveler Reviews</h1>
+
+  <div class="reviews-container" id="reviews"></div>
+
+  <section class="react-add-review-section">
+  <h2>Add Your Review</h2>
+  <div id="reactReviewApp"></div>
+  </section>
+
+  <footer data-aos="fade-up">
+    <p>&copy; 2026 Trip Organiser System | Book Your Journey With Confidence</p>
+  </footer>
+
+  <script src="../js/auth.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    const reviews = [
+      {
+        name: "Ananya",
+        location: "Canada",
+        rating: 5,
+        text: "Amazing trip! Management was very responsible and supportive.",
+        img: "https://randomuser.me/api/portraits/women/1.jpg"
+      },
+      {
+        name: "Rahul",
+        location: "Switzerland",
+        rating: 4,
+        text: "Good experience overall, but communication can improve.",
+        img: "https://randomuser.me/api/portraits/men/2.jpg"
+      },
+      {
+        name: "Sneha",
+        location: "Maldives",
+        rating: 3,
+        text: "Average service. Management should be more attentive.",
+        img: "https://randomuser.me/api/portraits/women/3.jpg"
+      },
+      {
+        name: "Vikram",
+        location: "USA",
+        rating: 5,
+        text: "Loved the organization! Smooth and well planned.",
+        img: "https://randomuser.me/api/portraits/men/4.jpg"
+      },
+      {
+        name: "Priya",
+        location: "France",
+        rating: 4,
+        text: "Enjoyed the trip. Clearer instructions needed.",
+        img: "https://randomuser.me/api/portraits/women/5.jpg"
+      },
+      {
+        name: "Arjun",
+        location: "Japan",
+        rating: 2,
+        text: "Not satisfied. Management must take responsibility for delays.",
+        img: "https://randomuser.me/api/portraits/men/6.jpg"
+      },
+      {
+        name: "Meera",
+        location: "Australia",
+        rating: 5,
+        text: "Wonderful experience! Very supportive team.",
+        img: "https://randomuser.me/api/portraits/women/7.jpg"
+      },
+      {
+        name: "Kiran",
+        location: "Italy",
+        rating: 3,
+        text: "Trip was okay, but complaints weren’t handled well.",
+        img: "https://randomuser.me/api/portraits/men/8.jpg"
+      },
+      {
+        name: "Divya",
+        location: "UKr",
+        rating: 4,
+        text: "Nice trip. Food arrangements could improve.",
+        img: "https://randomuser.me/api/portraits/women/9.jpg"
+      },
+      {
+        name: "Suresh",
+        location: "Greece",
+        rating: 5,
+        text: "Fantastic! Management was attentive throughout.",
+        img: "https://randomuser.me/api/portraits/men/10.jpg"
+      }
+    ];
+
+    const container = document.getElementById("reviews");
+
+    reviews.forEach((review, index) => {
+      const card = document.createElement("div");
+      card.className = "review-card";
+      card.setAttribute("data-aos", "fade-up");
+      card.setAttribute("data-aos-delay", index * 100);
+
+      card.innerHTML = `
+        <img src="${review.img}" alt="${review.name}" class="profile-pic">
+
+        <div class="review-content">
+          <div class="review-name">${review.name}</div>
+          <div class="review-location">${review.location}</div>
+          <div class="stars">${"★".repeat(review.rating)}</div>
+          <div class="review-text">${review.text}</div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+  
+  <!-- React CDN -->
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<!-- React File -->
+<script type="text/babel" src="../libraries/reviews-react.js"></script>
+
+</body>
+</html>

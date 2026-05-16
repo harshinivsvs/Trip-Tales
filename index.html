@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Organiser System</title>
+
+  <!-- CSS FILES -->
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="libraries/animations.css">
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- AOS ANIMATION CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="slide-down">
+    <div class="logo-section">
+      <img 
+        src="images/logo.png" 
+        alt="Trip Tales Logo" 
+        class="logo-img"
+      >
+      <h2>Trip Tales</h2>
+    </div>
+
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="pages/destinations.html">Destinations</a>
+      <a href="pages/online.html">Booking</a>
+      <a href="pages/reviews.html">Reviews</a>
+      <a href="pages/about.html">About</a>
+      <a href="pages/login.html">Login</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero fade-in">
+    <div class="overlay">
+      <div class="hero-text slide-up" data-aos="fade-up">
+        <h1>Explore The World With Us</h1>
+        <p>
+          Discover breathtaking destinations, plan your journey, and make unforgettable memories.
+          Your dream trip starts here with Trip Organiser System.
+        </p>
+        <a href="pages/destinations.html" class="btn pulse">Start Your Journey</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="features" data-aos="fade-up">
+    <h2 class="slide-down">Why Choose Us</h2>
+
+    <div class="card-container">
+      <div class="card hover-lift" data-aos="zoom-in" data-aos-delay="100">
+        <h3><i class="fa-solid fa-location-dot"></i> Best Destinations</h3>
+        <p>Explore top tourist places around the world with detailed guides.</p>
+      </div>
+
+      <div class="card hover-lift" data-aos="zoom-in" data-aos-delay="200">
+        <h3><i class="fa-solid fa-ticket"></i> Easy Booking</h3>
+        <p>Simple and fast online booking for your trips and vacations.</p>
+      </div>
+
+      <div class="card hover-lift" data-aos="zoom-in" data-aos-delay="300">
+        <h3><i class="fa-solid fa-wallet"></i> Affordable Plans</h3>
+        <p>Get budget-friendly travel plans with best experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="fade-in">
+    <p>&copy; 2026 Trip Organiser System | Designed for Travel Lovers</p>
+  </footer>
+
+  <!-- JS FILES -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/auth.js"></script>
+
+  <!-- AOS ANIMATION JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+</body>
+</html>

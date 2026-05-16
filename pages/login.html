@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Trip Organiser</title>
+
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../libraries/animations.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="slide-down">
+    <div class="logo-section">
+      <img 
+        src="../images/logo.png" 
+        alt="Trip Tales Logo" 
+        class="logo-img"
+      >
+      <h2>Trip Tales</h2>
+    </div>
+
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="online.html">Booking</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="about.html">About</a>
+      <a href="login.html" class="active">Login</a>
+    </nav>
+  </header>
+
+  <section class="login-page fade-in">
+    <div class="circle one float"></div>
+    <div class="circle two float"></div>
+
+    <div class="login-wrapper zoom-in" data-aos="zoom-in">
+
+      <div class="left-panel" data-aos="fade-right">
+        <div class="slideshow-container">
+          <div class="slide fade">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80" alt="Travel view">
+          </div>
+
+          <div class="slide fade">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80" alt="Beach view">
+          </div>
+
+          <div class="slide fade">
+            <img src="https://2.bp.blogspot.com/-E1x8KgYHhn4/WD9qKBmssKI/AAAAAAAAAPc/HlwTstXIO0YpWwM6kNWwLWQB8CBJQ_QCwCEw/s1600/waldorf.jpg" alt="Hotel view">
+          </div>
+
+          <div class="slide fade">
+            <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1000&q=80" alt="Nature view">
+          </div>
+
+          <div class="slide fade">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=80" alt="Mountain view">
+          </div>
+        </div>
+
+        <div class="dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+
+        <div class="left-overlay"></div>
+
+        <div class="left-content slide-up">
+          <h1>Trip Tales</h1>
+          <p>Travel is the one purchase that enriches you in ways beyond material wealth.</p>
+        </div>
+      </div>
+
+      <div class="right-panel" data-aos="fade-left">
+        <span class="material-icons plane-icon float">flight_takeoff</span>
+
+        <div class="welcome slide-down">
+          <h2 id="formTitle">Welcome</h2>
+          <p id="formSubtitle">Sign in with Email</p>
+        </div>
+
+        <form id="signinForm" class="slide-up" novalidate>
+          <div class="form-group">
+            <label for="signinEmail">Email Id</label>
+            <div class="input-box hover-lift">
+              <span class="material-icons">email</span>
+              <input type="text" id="signinEmail" placeholder="Enter your email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="signinPassword">Password</label>
+            <div class="input-box hover-lift">
+              <span class="material-icons">lock</span>
+              <input type="password" id="signinPassword" placeholder="Enter your password">
+            </div>
+          </div>
+
+          <div class="forgot">
+            <a href="#" id="forgotPassword">Forgot your password?</a>
+          </div>
+
+          <button type="submit" class="login-btn pulse">SIGN IN</button>
+
+          <div class="register-text">
+            Don’t have account? <a href="#" id="showRegister">Register Now</a>
+          </div>
+        </form>
+
+        <form id="registerForm" class="slide-up" style="display: none;" novalidate>
+          <div class="form-group">
+            <label for="registerName">Full Name</label>
+            <div class="input-box hover-lift">
+              <span class="material-icons">person</span>
+              <input type="text" id="registerName" placeholder="Enter your full name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="registerEmail">Email Id</label>
+            <div class="input-box hover-lift">
+              <span class="material-icons">email</span>
+              <input type="text" id="registerEmail" placeholder="Enter your email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="registerPassword">Password</label>
+            <div class="input-box hover-lift">
+              <span class="material-icons">lock</span>
+              <input type="password" id="registerPassword" placeholder="Create password">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="input-box hover-lift">
+              <span class="material-icons">lock</span>
+              <input type="password" id="confirmPassword" placeholder="Confirm password">
+            </div>
+          </div>
+
+          <button type="submit" class="login-btn pulse">REGISTER</button>
+
+          <div class="register-text">
+            Already have account? <a href="#" id="showSignIn">Sign In</a>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      const slides = document.getElementsByClassName("slide");
+      const dots = document.getElementsByClassName("dot");
+
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      slideIndex++;
+
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+      }
+
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].classList.add("active");
+
+      setTimeout(showSlides, 2000);
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../js/login.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+</body>
+</html>
