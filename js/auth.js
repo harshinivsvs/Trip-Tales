@@ -37,8 +37,29 @@ document.addEventListener("DOMContentLoaded", () => {
     font-weight: 600;
   `;
 
+  function confirmDialog(options) {
+    if (window.Swal && typeof Swal.fire === "function") {
+      return Swal.fire(options);
+    }
+
+    // Fallback to native confirm when Swal isn't available
+    return Promise.resolve({
+      isConfirmed: window.confirm((options.title ? options.title + "\n\n" : "") + (options.text || ""))
+    });
+  }
+
+  function alertDialog(options) {
+    if (window.Swal && typeof Swal.fire === "function") {
+      return Swal.fire(options);
+    }
+
+    // Fallback to native alert when Swal isn't available
+    window.alert((options.title ? options.title + "\n\n" : "") + (options.text || ""));
+    return Promise.resolve();
+  }
+
   logoutBtn.addEventListener("click", () => {
-    Swal.fire({
+    confirmDialog({
       icon: "question",
       title: "Logout?",
       text: "Are you sure you want to logout?",
@@ -52,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       localStorage.removeItem("loggedInUser");
 
-      Swal.fire({
+      alertDialog({
         icon: "success",
         title: "Logged Out",
         text: "You have been logged out successfully.",
